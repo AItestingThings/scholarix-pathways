@@ -4,9 +4,16 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
 import { Clock, Award } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import logo from "@/assets/scholarix-logo.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate("/thank-you");
+  };
   return (
     <section className="relative min-h-[90vh] gradient-hero py-12 px-4 overflow-hidden">
       {/* Background decoration */}
@@ -68,7 +75,7 @@ const Hero = () => {
               <p className="text-muted-foreground">Fill out this form and receive your personalized admission assessment within 24 hours</p>
             </div>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <Label htmlFor="name">Your Full Name*</Label>
                 <Input id="name" placeholder="Enter your full name" required />
